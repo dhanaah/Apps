@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Allows plain http:// for testing against the tracker inside the AIS
-     LAN. Production (public address) should use https://. -->
-<network-security-config>
-    <base-config cleartextTrafficPermitted="true">
-        <trust-anchors><certificates src="system" /></trust-anchors>
-    </base-config>
-</network-security-config>

@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">AIS Track Master</string>
-    <string name="settings_title">Settings</string>
-    <string name="notif_channel">Vehicle tracking</string>
-</resources>
