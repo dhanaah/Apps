@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:background="@drawable/bg_card" android:padding="12dp"
+    android:layout_marginBottom="8dp" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+        <TextView android:id="@+id/txtVehicle" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+            android:textSize="18sp" android:textStyle="bold" android:textColor="@color/text"/>
+        <TextView android:id="@+id/txtBadge" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="11sp" android:textStyle="bold" android:textColor="#FFFFFF" android:background="@color/amber"
+            android:paddingStart="8dp" android:paddingEnd="8dp" android:paddingTop="3dp" android:paddingBottom="3dp"/>
+    </LinearLayout>
+    <TextView android:id="@+id/txtRoute" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="13.5sp" android:textColor="@color/text" android:layout_marginTop="2dp"/>
+    <TextView android:id="@+id/txtInfo" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="12.5sp" android:textColor="@color/muted" android:layout_marginTop="2dp"/>
+    <TextView android:id="@+id/txtLast" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="12.5sp" android:textColor="@color/muted"/>
+    <TextView android:id="@+id/txtAction" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="12.5sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+</LinearLayout>

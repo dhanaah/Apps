@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/bg">
+
+    <!-- header -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:background="@color/navy" android:paddingStart="16dp" android:paddingEnd="8dp"
+        android:paddingTop="12dp" android:paddingBottom="12dp">
+        <ImageButton android:id="@+id/btnBack" android:layout_width="40dp" android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless" android:src="@android:drawable/ic_media_previous"
+            android:contentDescription="Back" app:tint="#FFFFFF" android:layout_marginEnd="6dp"/>
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+            <ImageView android:layout_width="wrap_content" android:layout_height="28dp" android:adjustViewBounds="true"
+                android:src="@drawable/header_logo" android:contentDescription="AIS Track Master"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Update Vehicle Location" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
+        </LinearLayout>
+        <ImageButton android:id="@+id/btnSettings" android:layout_width="44dp" android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless" android:src="@android:drawable/ic_menu_preferences"
+            android:contentDescription="Settings" app:tint="#FFFFFF"/>
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="12dp">
+
+        <!-- not configured warning -->
+        <TextView android:id="@+id/txtNotConfigured" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="@drawable/bg_card" android:padding="12dp" android:layout_marginBottom="10dp"
+            android:text="Set the AIS server address and your API key in Settings (gear icon) first."
+            android:textColor="@color/red" android:textSize="13sp" android:visibility="gone"/>
+
+        <!-- vehicle card -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_card" android:padding="14dp" android:layout_marginBottom="10dp">
+            <TextView style="@style/Label" android:text="Vehicle number"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <EditText android:id="@+id/edVehicle" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                    android:hint="e.g. TN01AB1234" android:inputType="textCapCharacters|textNoSuggestions" android:textSize="18sp" android:textStyle="bold"/>
+                <Button android:id="@+id/btnCheck" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Check" android:layout_marginStart="8dp" android:backgroundTint="@color/blue"/>
+            </LinearLayout>
+            <TextView android:id="@+id/txtCheck" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="13sp" android:layout_marginTop="6dp" android:textColor="@color/muted"/>
+            <TextView android:id="@+id/txtTrip" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="13.5sp" android:lineSpacingMultiplier="1.3" android:layout_marginTop="6dp"
+                android:background="@drawable/bg_status" android:padding="10dp" android:visibility="gone" android:textColor="@color/text"/>
+        </LinearLayout>
+
+        <!-- driver card -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_card" android:padding="14dp" android:layout_marginBottom="10dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView style="@style/Label" android:text="Driver name"/>
+                    <EditText android:id="@+id/edDriver" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName|textCapWords"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="10dp">
+                    <TextView style="@style/Label" android:text="Driver mobile"/>
+                    <EditText android:id="@+id/edMobile" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView style="@style/Label" android:text="Send location automatically every"/>
+            <Spinner android:id="@+id/spInterval" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- tracking card -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_card" android:padding="14dp" android:layout_marginBottom="10dp">
+            <Button android:id="@+id/btnTrack" android:layout_width="match_parent" android:layout_height="56dp"
+                android:text="▶  START TRACKING" android:textSize="16sp" android:textStyle="bold" android:backgroundTint="@color/green"/>
+            <TextView android:id="@+id/txtTracking" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="13sp" android:layout_marginTop="8dp" android:textColor="@color/muted"
+                android:text="Not tracking. Check the vehicle, then start - the phone keeps sending its GPS position to AIS until the vehicle reaches the customer."/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+                <Button android:id="@+id/btnSendNow" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                    android:text="Send now (GPS)" android:backgroundTint="@color/blue"/>
+                <Button android:id="@+id/btnPlace" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                    android:text="Send place name" android:layout_marginStart="8dp" android:backgroundTint="@color/muted"/>
+            </LinearLayout>
+            <EditText android:id="@+id/edPlace" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Place name (if GPS not available) - e.g. Krishnagiri" android:inputType="textCapWords" android:textSize="14sp"/>
+            <TextView android:id="@+id/txtSend" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="13sp" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- log card -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_card" android:padding="14dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                    android:text="Sent updates" android:textStyle="bold" android:textSize="14sp" android:textColor="@color/text"/>
+                <TextView android:id="@+id/btnClearLog" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Clear" android:textColor="@color/blue" android:padding="6dp"/>
+            </LinearLayout>
+            <TextView android:id="@+id/txtLog" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="12.5sp" android:fontFamily="monospace" android:lineSpacingMultiplier="1.25" android:layout_marginTop="6dp" android:textColor="@color/text"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Location is verified against the dispatch route before AIS accepts it.\nAIS Track Master v1.1 · Architected by DT"
+            android:textSize="11sp" android:textColor="@color/muted" android:gravity="center" android:padding="12dp"/>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
